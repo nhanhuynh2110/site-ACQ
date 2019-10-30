@@ -13,7 +13,7 @@ export default class TabContent extends React.PureComponent {
 
           <ul className='nav nav-tabs'>
             {categoryHomeWithProduct.map((el, k) => {
-              return <li key={el._id} className={k === 0 && 'active'}><a href={`#tab${el._id}`} data-toggle='tab'>{el.title}</a></li>
+              return <li key={el._id} className={k === 0 ? 'active' : ''}><a href={`#tab${el._id}`} data-toggle='tab'>{el.title}</a></li>
             })}
           </ul>
         </div>
@@ -21,7 +21,7 @@ export default class TabContent extends React.PureComponent {
           {categoryHomeWithProduct.map((el, k) => {
             
             return (
-              <div key={el._id} className={`tab-pane fade ${k === 0 && 'active in'}`} id={`tab${el._id}`} >
+              <div key={el._id} className={`tab-pane fade ${k === 0 ? 'active in' : ''}`} id={`tab${el._id}`} >
                 {el.products.map(pro => {
                   const proCat = categories.find(c => c._id === pro.categoryId)
                   const catLink = _.get(proCat, 'link')
@@ -30,9 +30,9 @@ export default class TabContent extends React.PureComponent {
                       <div className='single-products'>
                         <div className='productinfo text-center'>
                           <img src={`${domain}/${pro.image}`} alt='' />
-                          <h2>${pro.price}</h2>
+                          <h2>{pro.price ? new Number(pro.price).toLocaleString('vi-VN', { style: 'currency', currency: 'vnd' }) : ''}</h2>
                           <p>{pro.title}</p>
-                          <a href={`/${catLink}/${pro.link}-${pro._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />View More</a>
+                          <a href={`/c/${catLink}/${pro.link}-${pro._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />View More</a>
                         </div>
                       </div>
                     </div>

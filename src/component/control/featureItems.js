@@ -18,9 +18,9 @@ export default class FeatureItems extends React.PureComponent {
                   <div className='single-products'>
                       <div className='productinfo text-center'>
                         <img src={`${domain}/${el.image}`} alt='' />
-                        <h2>${el.price}</h2>
+                        <h2>{el.price ? new Number(el.price).toLocaleString('vi-VN', { style: 'currency', currency: 'vnd' }) : ''}</h2>
                         <p>{el.title}</p>
-                        <a href={`/${catLink}/${el.link}-${el._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart'></i>View More</a>
+                        <a href={`/c/${catLink}/${el.link}-${el._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart'></i>View More</a>
                       </div>
                       {/* <div className='product-overlay'>
                         <div className='overlay-content'>

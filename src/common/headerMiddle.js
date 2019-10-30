@@ -1,23 +1,62 @@
 import React from 'react'
 
 class HeaderMiddle extends React.PureComponent {
+  constructor (props) {
+    super(props)
+    this.screenWidth = window.innerWidth
+    this.screenHeight = window.innerHeight
+    this.resize = this.resize.bind(this)
+    this.onActiveMenu = this.onActiveMenu.bind(this)
+    this.onOpen = this.onOpen.bind(this)
+    this.state = {
+      activeMenu: '',
+      isOpen: false
+    }
+  }
+
+  onActiveMenu (name) {
+    if (this.screenWidth <= 767) {
+      this.setState({ activeMenu: name === this.state.activeMenu ? '' : name })
+    }
+  }
+
+  onOpen () {
+    if (this.screenWidth <= 767) {
+      this.setState({ activeMenu: '', isOpen: !this.state.isOpen })
+    }
+  }
+
+  resize () {
+    this.screenWidth = window.innerWidth
+    this.screenHeight= window.innerHeight
+  }
+
+
+  componentDidMount () {
+    window.addEventListener('resize', this.resize);
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.resize)
+  }
   render () {
+    
     return (
       <div className='wrap_nav'>
-        <span className='icon-mobile' />
+        <span className='icon-mobile' onClick={this.onOpen} />
         <div className='main_nav Module Module-42'>
           <div className='ModuleContent'>
-            <ul className='noli topmenu'>
-              <li className='prd_li1 active'><a className='active' href='index.html' target='_self'>TRANG CHỦ</a></li>
-              <li className='prd_li2'><a className='trainsion' href='gioi-thieu/thong-tin-gsv-1.html' target='_self'>GIỚI THIỆU</a>
-                <ul className='noli submenu'>
+            <ul className={this.state.isOpen ? 'noli topmenu active' : 'noli topmenu'}>
+              <li className='prd_li1 active'><a className='active' href='/' target='_self'>TRANG CHỦ</a></li>
+              <li className='prd_li2'><a onClick={() => this.onActiveMenu('gioi-thieu')} className='trainsion' target='_self'>GIỚI THIỆU</a>
+              <ul className={this.state.activeMenu === 'gioi-thieu' ? 'noli submenu active' : 'noli submenu'}>
                   <li><a className='trainsion' href='gioi-thieu/thong-tin-gsv-1/thong-tin-gsv-1.html' target='_self'>Thông tin GSV</a></li>
                   <li><a className='trainsion' href='gioi-thieu/thong-tin-gsv-1/lich-su-hinh-thanh-phat-trien.html' target='_self'>Lịch sử hình thành-phát triển</a></li>
                   <li><a className='trainsion' href='gioi-thieu/thong-tin-gsv-1/chung-nhan.html' target='_self'>Chứng nhận-Giải thưởng</a></li>
                 </ul>
                 <span className='arrow-menu' />
               </li>
-              <li className='prd_li3'><a className='trainsion' href='san-pham.html' target='_self'>SẢN PHẨM</a>
+              <li className='prd_li3'><a className='trainsion' target='_self'>SẢN PHẨM</a>
                 <div className='menu_prd_wrap hidden'>
                   <ul className='noli menu_prd'>
                     <li>
@@ -51,8 +90,9 @@ class HeaderMiddle extends React.PureComponent {
                 </div>
                 <span className='arrow-menu' />
               </li>
-              <li className='prd_li4'><a className='trainsion' href='tin-tuc.html' target='_self'>TIN TỨC</a>
-                <ul className='noli submenu'>
+              <li className='prd_li4'>
+                <a onClick={() => this.onActiveMenu('tin-tuc')} className='trainsion' target='_self'>TIN TỨC</a>
+                <ul className={this.state.activeMenu === 'tin-tuc' ? 'noli submenu active' : 'noli submenu'}>
                   <li><a className='trainsion' href='tin-tuc/tin-gsv.html' target='_self'>Tin GSV</a></li>
                   <li><a className='trainsion' href='tin-tuc/catalogue-dien-tu.html' target='_self'>Catalogue điện tử</a></li>
                   <li><a className='trainsion' href='tin-tuc/thu-vien-anh.html' target='_self'>Thư viện ảnh</a></li>
@@ -62,8 +102,8 @@ class HeaderMiddle extends React.PureComponent {
                 <span className='arrow-menu'></span>
               </li>
               <li className='prd_li5'>
-                <a className='trainsion' href='dich-vu.html' target='_self'>DỊCH VỤ</a>
-                <ul className='noli submenu'>
+                <a onClick={() => this.onActiveMenu('dich-vu')} className='trainsion' target='_self'>DỊCH VỤ</a>
+                 <ul className={this.state.activeMenu === 'dich-vu' ? 'noli submenu active' : 'noli submenu'}>
                   <li><a className='trainsion' href='dich-vu/dich-vu/thong-tin-ve-ac-quy/chuc-nang-cua-ac-quy.html' target='_self'>Thông tin về ắc quy</a></li>
                   <li><a className='trainsion' href='dich-vu/dich-vu/huong-dan-su-dung/huong-dan-ac-quy-acid.html' target='_self'>Hướng dẫn sử dụng</a></li>
                   <li><a className='trainsion' href='dich-vu/dich-vu/meo-su-dung-ac-quy-2/10-dau-hieu-ac-quy-can-duoc-cham-soc.html' target='_self'>Mẹo sử dụng ắc quy</a></li>
@@ -72,8 +112,8 @@ class HeaderMiddle extends React.PureComponent {
                 <span className='arrow-menu' />
               </li>
               <li className='prd_li6'>
-                <a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv.html' target='_self'>Tuyển dụng</a>
-                <ul className='noli submenu'>
+                <a onClick={() => this.onActiveMenu('tuyen-dung')} className='trainsion' target='_self'>Tuyển dụng</a>
+                <ul className={this.state.activeMenu === 'tuyen-dung' ? 'noli submenu active' : 'noli submenu'}>
                   <li><a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv/lam-viec-tai-gsv.html' target='_self'>Môi trường làm việc</a></li>
                   <li><a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv/che-do-dai-ngo.html' target='_self'>Chế độ đãi ngộ</a></li>
                   <li><a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv/dao-tao-va-phat-trien.html' target='_self'>Đào tạo và Phát triển</a></li>
@@ -81,7 +121,7 @@ class HeaderMiddle extends React.PureComponent {
                 </ul>
                 <span className='arrow-menu' />
               </li>
-              <li className='prd_li7'><a className='trainsion' href='lien-he.html' target='_self'>Liên hệ</a></li>
+              <li className='prd_li7'><a className='trainsion' href='/contact' target='_self'>Liên hệ</a></li>
             </ul>
           </div>
         </div>

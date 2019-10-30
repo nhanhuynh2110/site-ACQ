@@ -16,9 +16,9 @@ export default class RecommendedItems extends React.PureComponent {
         <div className='single-products'>
           <div className='productinfo text-center'>
             <img src={`${domain}/${item.image}`} alt='' />
-            <h2>${item.price}</h2>
+            <h2>{item.price ? new Number(el.price).toLocaleString('vi-VN', { style: 'currency', currency: 'vnd' }) : ''}</h2>
             <p>{item.title}</p>
-            <a href={`${catLink}/${item.link}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart'></i>View More</a>
+            <a href={`/c/${catLink}/${item.link}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart'></i>View More</a>
           </div>
           
         </div>

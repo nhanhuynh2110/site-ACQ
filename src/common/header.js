@@ -16,14 +16,14 @@ class Headers extends React.PureComponent {
 		    <div className='container'>
           <div className='row'>
             <div className='col-sm-2 col-md-4 logo'>
-              <div className='sitelogo Module'><a href='index.html'><img className='logo' alt='' src='/images/gsv-logo-vi.png' /></a></div>
+              <div className='sitelogo Module'><a href='/'><img className='logo' alt='' src='/images/gsv-logo-vi.png' /></a></div>
             </div>
             <div className='col-sm-10 col-md-8 header_right'>
               <div className='header_top_r'>
-                <div id='ctl00_SearchInput1_pnlSearch' className='search' siteroot='http://www.gsbattery.vn'>
+                {/* <div id='ctl00_SearchInput1_pnlSearch' className='search' siteroot='http://www.gsbattery.vn'>
                   <input name='ctl00$SearchInput1$txtSearch' type='text' placeholder='Tìm Kiếm' title='Tìm kiếm' className='searchinput' />
                   <input type='submit' name='ctl00$SearchInput1$btnSearch' value='Tìm kiếm' id='ctl00_SearchInput1_btnSearch' className='searchbutton' />
-                </div>
+                </div> */}
                 <div className='socical Module Module-135'>
                   <div className='ModuleContent'>
                     <a target='_blank' href='https://www.facebook.com/gsbatteryvn'><em className='fa fa-facebook-square'></em></a>

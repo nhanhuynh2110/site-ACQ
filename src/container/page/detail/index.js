@@ -113,7 +113,7 @@ class Detail extends React.PureComponent {
               <p>Mã Sản Phẩm: {info && info.code}</p>
               <div><img src='/images/product-details/rating.png' alt='' /></div>
               <span>
-                <span>US ${info && info.price}</span>
+                <span>Giá: {info && info.price ? new Number(info.price).toLocaleString('vi-VN', { style: 'currency', currency: 'vnd' }) : ''}</span>
                 {/* <label>Quantity:</label> */}
                 {/* <input type='text' defaultValue='3' />
                 <button type='button' className='btn btn-fefault cart'>
