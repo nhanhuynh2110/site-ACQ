@@ -15,7 +15,7 @@ export default class PanelGroup extends React.PureComponent {
                   <div className='panel-heading'>
                     <h4 className='panel-title'>
                       <a data-toggle='collapse' data-parent='#accordian' href={`#childrens-${el._id}`}>
-                        <span className='badge pull-right'><i className='fa fa-plus'></i></span>
+                        <span className='badge pull-right'><i className='fa fa-plus' /></span>
                         {el.title}
                       </a>
                     </h4>
@@ -23,7 +23,7 @@ export default class PanelGroup extends React.PureComponent {
                   <div id={`childrens-${el._id}`} className='panel-collapse collapse'>
                     <div className='panel-body'>
                       <ul>
-                        {childrens.map(item => <li key={`children-${item._id}`}><a href={`/c/${item.link}`}>{item.title}</a></li>)}
+                        {childrens.map(item => <li key={`children-${item._id}`}><a href={`/san-pham/${item.link}`}>{item.title}</a></li>)}
                       </ul>
                     </div>
                   </div>

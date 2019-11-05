@@ -17,7 +17,6 @@ class DefaultLayout extends React.PureComponent {
   componentDidMount () {
     this.props.api.home.menu({}, (err, data) => {
       if (err) return null
-      console.log('data', data)
       this.props.data.setCategories(data.menu)
       this.setState({categories: data.menu, categoriesProduct: data.menu, post: data.post})
     })

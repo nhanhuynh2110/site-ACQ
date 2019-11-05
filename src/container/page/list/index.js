@@ -40,13 +40,13 @@ class Content extends React.PureComponent {
   nextPage () {
     let {page} = this.props
     let {catId} = this.props.match.params
-    this.props.history.push(`/c/${catId}?page=${parseInt(page) + 1}`)
+    this.props.history.push(`/san-pham/${catId}?page=${parseInt(page) + 1}`)
     this.getList(parseInt(page) + 1)
   }
 
   prevPage () {
     let {page, catId} = this.props
-    this.props.history.push(`/c/${catId}?page=${parseInt(page) - 1}`)
+    this.props.history.push(`/san-pham/${catId}?page=${parseInt(page) - 1}`)
     this.getList(parseInt(page) - 1)
   }
 
@@ -54,7 +54,7 @@ class Content extends React.PureComponent {
     let {catId} = this.props
     const page = e.currentTarget.getAttribute('data-page')
 
-    this.props.history.push(`/c/${catId}?page=${parseInt(page)}`)
+    this.props.history.push(`/san-pham/${catId}?page=${parseInt(page)}`)
     this.getList(parseInt(page))
   }
 

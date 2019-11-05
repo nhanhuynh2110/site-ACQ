@@ -13,8 +13,8 @@ class App extends React.PureComponent {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/contact' component={Contact} />
-              <Route exact path='/c/:catId' component={List} />
-              <Route path='/c/:catId/:postlink' component={Detail} />
+              <Route exact path='/san-pham/:catId' component={List} />
+              <Route path='/san-pham/:catId/:postlink' component={Detail} />
             </Switch>
           </Layout>
         </Suspense>

@@ -77,7 +77,7 @@ class HeaderMiddle extends React.PureComponent {
         <div className='main_nav Module Module-42'>
           <div className='ModuleContent'>
             <ul className={this.state.isOpen ? 'noli topmenu active' : 'noli topmenu'}>
-              <li className='prd_li1 active'><a className='active' href='/' target='_self'>TRANG CHỦ</a></li>
+              <li className='prd_li1 active flex-grow-0'><a className='active' href='/' target='_self'>TRANG CHỦ</a></li>
               <li className='prd_li2 p-relative'>
                 <a onClick={() => this.onActiveMenu('gioi-thieu')} className='trainsion p-relative' target='_self'>
                   GIỚI THIỆU
@@ -127,7 +127,7 @@ class HeaderMiddle extends React.PureComponent {
                   <li><a className='trainsion' href='dich-vu/hoi-dap.html' target='_self'>Hỏi đáp</a></li>
                 </ul>
               </li>
-              <li className='prd_li6 p-relative'>
+              {/* <li className='prd_li6 p-relative'>
                 <a onClick={() => this.onActiveMenu('tuyen-dung')} className='trainsion p-relative' target='_self'>
                   Tuyển dụng
                   <span className='arrow-menu' />
@@ -139,8 +139,8 @@ class HeaderMiddle extends React.PureComponent {
                   <li><a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv/co-hoi-nghe-nghiep.html' target='_self'>Cơ hội nghề nghiệp</a></li>
                 </ul>
 
-              </li>
-              <li className='prd_li7 p-relative'><a className='trainsion' href='/contact' target='_self'>Liên hệ</a></li>
+              </li> */}
+              <li className='prd_li7 p-relative flex-grow-0'><a className='trainsion' href='/contact' target='_self'>Liên hệ</a></li>
             </ul>
           </div>
         </div>

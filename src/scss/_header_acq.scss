@@ -9,6 +9,9 @@
   min-height: 80px;
   padding-top: 10px;
   display: block;
+  .logo {
+    margin-top: -3px;
+  }
 
   @media screen and (max-width: 767px) {
     background: none;
@@ -169,8 +172,11 @@
 
     @media screen and (min-width: 768px) {
       ul.topmenu {
+        width: 100%;
+        display: flex;
         > li {
-          float: left;
+          // float: left;
+          flex-grow: 1;
           height: 27px;
           padding: 0 12px;
           border: 1px solid transparent;
@@ -219,27 +225,73 @@
             z-index: 1;
             width: 100%;
             left: 0;
-            background-color: #FFFFFF;
-            padding: 20px 0;
+            .container {
+              padding-right: 0;
+              padding-left: 0;
+              background: #cbe4f2;
+              border: 1px solid #0b76bb;
+              border-radius: 0 5px 5px 5px;
+            }
             ul.menu_prd {
               padding-left: 0px;
               display: flex;
               flex-wrap: wrap;
               > li {
-                width: 30%;
+                text-align: left;
+                padding: 20px;
+                width: 33%;
                 flex-grow: 0;
+                &:hover {
+                  background: #ffffff;
+                }
+
+                > a {
+                  padding: 3px 10px;
+                  border-radius: 5px;
+                  strong {
+                    color: #428bca;
+                  }
+                }
                 ul {
-                  padding-left: 15px;
+                  padding-left: 0;
+                  li {
+                    margin: 10px 0;
+                  }
                 }
                 a {
+                  font-size: 13px;
                   cursor: pointer;
                   color: #333;
+                  &:hover {
+                    text-transform: uppercase;
+                    font-weight: 600;
+                  }
+                  .title-image {
+                    width: 50px;
+                    height: 40px;
+                    display: inline-block;
+                    vertical-align: text-top;
+                    margin-right: 5px;
+                    background: url(http://localhost:3100/file-manager/4.jpg) center center;
+                  }
+                  .icon-arrow {
+                    font-size: 15px;
+                    border-radius: 50%;
+                    /* vertical-align: middle; */
+                    margin-right: 10px;
+                    font-weight: bold;
+                    width: 20px;
+                    height: 20px;
+                    color: #ffffff;
+                    background: #2BA9D8;
+                    text-align: center;
+                    line-height: 20px;
+                    vertical-align: middle;
+                  }
                 }
               }
             }
           }
-
-
 
           ul.submenu {
             display: none;
@@ -257,6 +309,7 @@
             border-radius: 0 5px 5px 5px;
 
             > li {
+              text-align: left;
               display: block;
               &:first-child {
                 a {
@@ -269,6 +322,9 @@
                 padding: 1px 10px;
                 border-top: 1px solid #fff;
                 display: block;
+                &:hover {
+                  font-weight: 600;
+                }
               }
             }
           }

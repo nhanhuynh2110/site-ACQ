@@ -19,7 +19,7 @@ export default class TabContent extends React.PureComponent {
         </div>
         <div className='tab-content'>
           {categoryHomeWithProduct.map((el, k) => {
-            
+
             return (
               <div key={el._id} className={`tab-pane fade ${k === 0 ? 'active in' : ''}`} id={`tab${el._id}`} >
                 {el.products.map(pro => {
@@ -32,14 +32,14 @@ export default class TabContent extends React.PureComponent {
                           <img src={`${domain}/${pro.image}`} alt='' />
                           <h2>{pro.price ? new Number(pro.price).toLocaleString('vi-VN', { style: 'currency', currency: 'vnd' }) : ''}</h2>
                           <p>{pro.title}</p>
-                          <a href={`/c/${catLink}/${pro.link}-${pro._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />View More</a>
+                          <a href={`/san-pham/${catLink}/${pro.link}-${pro._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />View More</a>
                         </div>
                       </div>
                     </div>
                   </div>
                 })}
-                
-              
+
+
               </div>
             )
           })}
