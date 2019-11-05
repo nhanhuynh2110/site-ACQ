@@ -133,16 +133,15 @@ class Detail extends React.PureComponent {
         <div className='category-tab shop-details-tab'>
           <div className='col-sm-12'>
             <ul className='nav nav-tabs'>
-              <li  className='active'><a href='#reviews' data-toggle='tab'>Details</a></li>
+              <li  className='active'><a href='#reviews' data-toggle='tab'>Mô Tả</a></li>
               {/* <li><a href='#companyprofile' data-toggle='tab'>Company Profile</a></li> */}
-              <li><a href='#tag' data-toggle='tab'>Tag</a></li>
+              <li><a href='#tag' data-toggle='tab'>Chi Tiết</a></li>
               {/* <li><a href='#details' data-toggle='tab'>Reviews (5)</a></li> */}
             </ul>
           </div>
         
           <div className='tab-content'>
-            
-          <div className='tab-pane fade active in' id='reviews' >
+            <div className='tab-pane fade active in' id='reviews' >
               <div className='col-sm-12'>
                 <ul>
                   <li><a href=''><i className='fa fa-user'></i>EUGEN</a></li>
@@ -150,14 +149,15 @@ class Detail extends React.PureComponent {
                   <li><a href=''><i className='fa fa-calendar-o'></i>{info && utils.formatDateToString(info.createDate)}</a></li>
                 </ul>
                 <p>{info && info.description}</p>
-                <p><b>Write Your Review</b></p>
-                {info && <div dangerouslySetInnerHTML={{__html: info.content}}></div>}
-                
               </div>
             </div>
- 
+
+            <div className='tab-pane fade in' id='tag' >
+              <div className='col-sm-12'>
+                {info && <div dangerouslySetInnerHTML={{__html: info.content}}></div>}
+              </div>
+            </div>
           </div>
-        
         </div>
       </>
     )

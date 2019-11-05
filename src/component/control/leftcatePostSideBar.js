@@ -9,7 +9,7 @@ class LeftSideBar extends React.PureComponent {
     const {categories = []} = this.props
     return (
       <div className='left-sidebar'>
-        <h2>Danh Mục Sản Phẩm</h2>
+        <h2>Danh Mục Bài Viết</h2>
         <PanelGroup categories={categories || []}/>
         {/* <BrandsProducts />
         <PriceRange /> */}

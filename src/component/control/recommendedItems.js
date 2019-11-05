@@ -18,7 +18,7 @@ export default class RecommendedItems extends React.PureComponent {
             <img src={`${domain}/${item.image}`} alt='' />
             <h2>{item.price ? new Number(item.price).toLocaleString('vi-VN', { style: 'currency', currency: 'vnd' }) : ''}</h2>
             <p>{item.title}</p>
-            <a href={`/san-pham/${catLink}/${item.link}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />View More</a>
+            <a href={`/san-pham/${catLink}/${item.link}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart'></i>View More</a>
           </div>
 
         </div>
@@ -44,7 +44,7 @@ export default class RecommendedItems extends React.PureComponent {
     })
     return (
       <div className='recommended_items'>
-        <h2 className='title text-center'>recommended items</h2>
+        <h2 className='title text-center'>Sản Phẩm HOT</h2>
         <div id='recommended-item-carousel' className='carousel slide' data-ride='carousel'>
           <div className='carousel-inner'>
             {Object.keys(items).map((el, k) => this.blockItems('recommended-' + el, items[el], k === 0 ? 'active' : ''))}

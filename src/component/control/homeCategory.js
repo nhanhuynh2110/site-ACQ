@@ -5,7 +5,7 @@ const domain = config.server.domain
 class HomeCategory extends React.PureComponent {
   render () {
     let categories = []
-
+    
     if (this.props.categories) categories = this.props.categories
     return (
       <div id='home_home_category' className='container'>
