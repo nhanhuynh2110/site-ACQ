@@ -1,4 +1,5 @@
 import React from 'react'
+import MegaProduct from './megaProduct'
 
 class HeaderMiddle extends React.PureComponent {
   constructor (props) {
@@ -8,6 +9,9 @@ class HeaderMiddle extends React.PureComponent {
     this.resize = this.resize.bind(this)
     this.onActiveMenu = this.onActiveMenu.bind(this)
     this.onOpen = this.onOpen.bind(this)
+    this.setWrapperRef = this.setWrapperRef.bind(this)
+    this.handleClickOutside = this.handleClickOutside.bind(this)
+    this.reset = this.reset.bind(this)
     this.state = {
       activeMenu: '',
       isOpen: false
@@ -28,100 +32,115 @@ class HeaderMiddle extends React.PureComponent {
 
   resize () {
     this.screenWidth = window.innerWidth
-    this.screenHeight= window.innerHeight
+    this.screenHeight = window.innerHeight
+    this.reset()
   }
 
+  reset () {
+    if (this.screenWidth <= 767) {
+      if (this.state.activeMenu === '' && !this.state.isOpen) return
+      this.setState({
+        activeMenu: '',
+        isOpen: false
+      })
+    }
+  }
+
+  setWrapperRef (node) {
+    this.wrapperRef = node
+  }
 
   componentDidMount () {
-    window.addEventListener('resize', this.resize);
+    window.addEventListener('resize', this.resize)
+    document.addEventListener('mousedown', this.handleClickOutside)
   }
 
   componentWillUnmount () {
     window.removeEventListener('resize', this.resize)
+    document.removeEventListener('mousedown', this.handleClickOutside)
   }
+
+  handleClickOutside (event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      if (this.screenWidth <= 767) {
+        this.reset()
+      }
+    }
+  }
+
   render () {
-    
+    const {categoriesProduct, post = []} = this.props
+    console.log('post', post)
     return (
-      <div className='wrap_nav'>
+      <div className='wrap_nav' ref={this.setWrapperRef}>
         <span className='icon-mobile' onClick={this.onOpen} />
         <div className='main_nav Module Module-42'>
           <div className='ModuleContent'>
             <ul className={this.state.isOpen ? 'noli topmenu active' : 'noli topmenu'}>
               <li className='prd_li1 active'><a className='active' href='/' target='_self'>TRANG CHỦ</a></li>
-              <li className='prd_li2'><a onClick={() => this.onActiveMenu('gioi-thieu')} className='trainsion' target='_self'>GIỚI THIỆU</a>
-              <ul className={this.state.activeMenu === 'gioi-thieu' ? 'noli submenu active' : 'noli submenu'}>
+              <li className='prd_li2 p-relative'>
+                <a onClick={() => this.onActiveMenu('gioi-thieu')} className='trainsion p-relative' target='_self'>
+                  GIỚI THIỆU
+                  <span className='arrow-menu' />
+                </a>
+                <ul className={this.state.activeMenu === 'gioi-thieu' ? 'noli submenu active' : 'noli submenu'}>
                   <li><a className='trainsion' href='gioi-thieu/thong-tin-gsv-1/thong-tin-gsv-1.html' target='_self'>Thông tin GSV</a></li>
                   <li><a className='trainsion' href='gioi-thieu/thong-tin-gsv-1/lich-su-hinh-thanh-phat-trien.html' target='_self'>Lịch sử hình thành-phát triển</a></li>
                   <li><a className='trainsion' href='gioi-thieu/thong-tin-gsv-1/chung-nhan.html' target='_self'>Chứng nhận-Giải thưởng</a></li>
                 </ul>
-                <span className='arrow-menu' />
+
               </li>
-              <li className='prd_li3'><a className='trainsion' target='_self'>SẢN PHẨM</a>
-                <div className='menu_prd_wrap hidden'>
-                  <ul className='noli menu_prd'>
-                    <li>
-                      <a className='trainsion' href='san-pham/ac-quy-xe-may-gs.html' target='_self'>ẮC QUY XE MÁY GS</a>
-                      <ul className='noli submenu_prd'>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-xe-may-gs/danh-sach-san-pham-5.html' target='_self'><img src='Data/Sites/1/media/menu_icon/view-details-xxl.png' alt='DANH SÁCH SẢN PHẨM' />DANH SÁCH SẢN PHẨM</a></li>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-xe-may-gs/ac-quy-mien-bao-dung.html' target='_self'><img src='Data/Sites/1/media/baiviet/11042019/moto_free-11.png' alt='ẮC QUY MIỄN BẢO DƯỠNG' />ẮC QUY MIỄN BẢO DƯỠNG</a></li>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-xe-may-gs/e-series.html' target='_self'><img src='Data/Sites/1/media/baiviet/11042019/logomotoeseria.png' alt='ẮC QUY MIỄN BẢO DƯỠNG E-SERIES' />ẮC QUY MIỄN BẢO DƯỠNG E-SERIES</a></li>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-xe-may-gs/ac-quy-xe-may-xuat-khau.html' target='_self'><img src='Data/Sites/1/media/menu_icon/dsc_0018.jpg' alt='ẮC QUY XE MÁY (XUẤT KHẨU)' />ẮC QUY XE MÁY (XUẤT KHẨU)</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a className='trainsion' href='san-pham/ac-quy-oto-xe-tai-gs.html' target='_self'>ẮC QUY ÔTÔ GS</a>
-                      <ul className='noli submenu_prd'>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-oto-xe-tai-gs/danh-sach-san-pham-1.html' target='_self'><img src='Data/Sites/1/media/menu_icon/view-details-xxl.png' alt='DANH SÁCH SẢN PHẨM' />DANH SÁCH SẢN PHẨM</a></li>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-oto-xe-tai-gs/ac-quy-hybrid.html' target='_self'><img src='Data/Sites/1/media/hybrid.png' alt='ẮC QUY HYBRID' />ẮC QUY HYBRID</a></li>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-oto-xe-tai-gs/ac-quy-mien-bao-duong-oto-xe-tai.html' target='_self'><img src='Data/Sites/1/media/baiviet/07112018/oto_free1.png' alt='ẮC QUY MIỄN BẢO DƯỠNG' />ẮC QUY MIỄN BẢO DƯỠNG</a></li>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-oto-xe-tai-gs/ac-quy-acid-oto-xe-tai.html' target='_self'><img src='Data/Sites/1/media/baiviet/acquytruyenthong1.jpg' alt='ẮC QUY TRUYỀN THỐNG' />ẮC QUY TRUYỀN THỐNG</a></li>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-oto-xe-tai-gs/ac-quy-dan-dung.html' target='_self'><img src='Data/Sites/1/media/baiviet/11042019/logo_qdd.png' alt='ẮC QUY DÂN DỤNG' />ẮC QUY DÂN DỤNG</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a className='trainsion' href='san-pham/ac-quy-cong-nghiep-4.html' target='_self'>ẮC QUY CÔNG NGHIỆP</a>
-                      <ul className='noli submenu_prd'>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-cong-nghiep-4/thong-tin-ky-thuat.html' target='_self'><img src='Data/Sites/1/media/menu_icon/view-details-xxl.png' alt='Thông tin kỹ thuật' />Thông tin kỹ thuật</a></li>
-                        <li><a className='black trainsion' href='san-pham/ac-quy-cong-nghiep-4/ac-quy-xe-nang.html' target='_self'><img src='Data/Sites/1/media/menu_icon/icon-acquyxenang3.png' alt='ẮC QUY XE NÂNG' />ẮC QUY XE NÂNG</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                  <div className='clear' />
+              <li className='prd_li3'>
+                <a onClick={() => this.onActiveMenu('san-pham')} className='trainsion p-relative' target='_self'>
+                  SẢN PHẨM
+                  <span className='arrow-menu' />
+                </a>
+                <div className={this.state.activeMenu === 'san-pham' ? 'menu_prd_wrap active' : 'menu_prd_wrap'}>
+                  {<MegaProduct groups={categoriesProduct} />}
                 </div>
-                <span className='arrow-menu' />
+
               </li>
-              <li className='prd_li4'>
-                <a onClick={() => this.onActiveMenu('tin-tuc')} className='trainsion' target='_self'>TIN TỨC</a>
+              <li className='prd_li4 p-relative'>
+                <a onClick={() => this.onActiveMenu('tin-tuc')} className='trainsion p-relative' target='_self'>
+                  TIN TỨC
+                  <span className='arrow-menu' />
+                </a>
                 <ul className={this.state.activeMenu === 'tin-tuc' ? 'noli submenu active' : 'noli submenu'}>
-                  <li><a className='trainsion' href='tin-tuc/tin-gsv.html' target='_self'>Tin GSV</a></li>
+                  {post.map(el => !el.parentId && <li key={`tin-tuc-${el._id}`}><a className='trainsion' href={`/tin-tuc/${el.link}`} target='_self'>{el.title}</a></li>)}
+                  {/* <li><a className='trainsion' href='tin-tuc/tin-gsv.html' target='_self'>Tin GSV</a></li>
                   <li><a className='trainsion' href='tin-tuc/catalogue-dien-tu.html' target='_self'>Catalogue điện tử</a></li>
                   <li><a className='trainsion' href='tin-tuc/thu-vien-anh.html' target='_self'>Thư viện ảnh</a></li>
                   <li><a className='trainsion' href='tin-tuc/video-clips-1.html' target='_self'>Video clips</a></li>
-                  <li><a className='trainsion' href='tin-tuc/tap-chi-noi-bo.html' target='_self'>Tạp chí nội bộ</a></li>
+                  <li><a className='trainsion' href='tin-tuc/tap-chi-noi-bo.html' target='_self'>Tạp chí nội bộ</a></li> */}
                 </ul>
-                <span className='arrow-menu'></span>
+
               </li>
-              <li className='prd_li5'>
-                <a onClick={() => this.onActiveMenu('dich-vu')} className='trainsion' target='_self'>DỊCH VỤ</a>
-                 <ul className={this.state.activeMenu === 'dich-vu' ? 'noli submenu active' : 'noli submenu'}>
+              <li className='prd_li5 p-relative'>
+                <a onClick={() => this.onActiveMenu('dich-vu')} className='trainsion p-relative' target='_self'>
+                  DỊCH VỤ
+                  <span className='arrow-menu' />
+                </a>
+                <ul className={this.state.activeMenu === 'dich-vu' ? 'noli submenu active' : 'noli submenu'}>
                   <li><a className='trainsion' href='dich-vu/dich-vu/thong-tin-ve-ac-quy/chuc-nang-cua-ac-quy.html' target='_self'>Thông tin về ắc quy</a></li>
                   <li><a className='trainsion' href='dich-vu/dich-vu/huong-dan-su-dung/huong-dan-ac-quy-acid.html' target='_self'>Hướng dẫn sử dụng</a></li>
                   <li><a className='trainsion' href='dich-vu/dich-vu/meo-su-dung-ac-quy-2/10-dau-hieu-ac-quy-can-duoc-cham-soc.html' target='_self'>Mẹo sử dụng ắc quy</a></li>
                   <li><a className='trainsion' href='dich-vu/hoi-dap.html' target='_self'>Hỏi đáp</a></li>
                 </ul>
-                <span className='arrow-menu' />
               </li>
-              <li className='prd_li6'>
-                <a onClick={() => this.onActiveMenu('tuyen-dung')} className='trainsion' target='_self'>Tuyển dụng</a>
+              <li className='prd_li6 p-relative'>
+                <a onClick={() => this.onActiveMenu('tuyen-dung')} className='trainsion p-relative' target='_self'>
+                  Tuyển dụng
+                  <span className='arrow-menu' />
+                </a>
                 <ul className={this.state.activeMenu === 'tuyen-dung' ? 'noli submenu active' : 'noli submenu'}>
                   <li><a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv/lam-viec-tai-gsv.html' target='_self'>Môi trường làm việc</a></li>
                   <li><a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv/che-do-dai-ngo.html' target='_self'>Chế độ đãi ngộ</a></li>
                   <li><a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv/dao-tao-va-phat-trien.html' target='_self'>Đào tạo và Phát triển</a></li>
                   <li><a className='trainsion' href='tuyen-dung/danh-sach-tuyen-dung/lam-viec-tai-gsv/co-hoi-nghe-nghiep.html' target='_self'>Cơ hội nghề nghiệp</a></li>
                 </ul>
-                <span className='arrow-menu' />
+
               </li>
-              <li className='prd_li7'><a className='trainsion' href='/contact' target='_self'>Liên hệ</a></li>
+              <li className='prd_li7 p-relative'><a className='trainsion' href='/contact' target='_self'>Liên hệ</a></li>
             </ul>
           </div>
         </div>

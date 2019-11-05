@@ -8,23 +8,26 @@ class DefaultLayout extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      categories: []
+      categories: [],
+      categoriesProduct: [],
+      post: []
     }
   }
 
   componentDidMount () {
     this.props.api.home.menu({}, (err, data) => {
       if (err) return null
+      console.log('data', data)
       this.props.data.setCategories(data.menu)
-      this.setState({categories: data.menu})
+      this.setState({categories: data.menu, categoriesProduct: data.menu, post: data.post})
     })
   }
 
   render () {
-    const {categories} = this.state
+    const {categories, categoriesProduct, post} = this.state
     return (
       <React.Fragment>
-        <Header categories={categories} />
+        <Header categories={categories} categoriesProduct={categoriesProduct} post={post} />
         {this.props.children}
         <Footer />
       </React.Fragment>

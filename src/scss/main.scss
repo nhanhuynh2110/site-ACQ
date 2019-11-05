@@ -48,7 +48,7 @@ h2, h2.title {
         display: flex;
         justify-content: flex-end;
       }
-      
+
     }
   }
   .info {
@@ -83,8 +83,12 @@ h2, h2.title {
   }
 }
 
-.p-realtive {
+.p-relative {
   position: relative;
+}
+
+.p-static {
+  position: static;
 }
 
 .p-absolute {
