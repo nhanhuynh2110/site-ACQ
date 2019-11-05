@@ -23,7 +23,7 @@ export default class PanelGroup extends React.PureComponent {
                   <div id={`childrens-${el._id}`} className='panel-collapse collapse'>
                     <div className='panel-body'>
                       <ul>
-                        {childrens.map(item => <li key={`children-${item._id}`}><a href={`/c/${item.link}`}>{item.title}</a></li>)}
+                        {childrens.map(item => <li key={`children-${item._id}`}><a href={`/san-pham/${item.link}`}>{item.title}</a></li>)}
                       </ul>
                     </div>
                   </div>

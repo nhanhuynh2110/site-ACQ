@@ -8,7 +8,7 @@ export default class FeatureItems extends React.PureComponent {
     const {categories = [], products, page, isPaging, pageSize, total, onChangePaging} = this.props
     return (
       <div className='features_items'>
-          <h2 className='title text-center'>Features Items</h2>
+          <h2 className='title text-center'>Sản Phẩm Mới</h2>
           {products.map(el => {
             const cat = categories.find(cate => cate._id === el.categoryId)
             const catLink = _.get(cat, 'link')
@@ -17,10 +17,12 @@ export default class FeatureItems extends React.PureComponent {
                 <div className='product-image-wrapper'>
                   <div className='single-products'>
                       <div className='productinfo text-center'>
-                        <img src={`${domain}/${el.image}`} alt='' />
+                        <a href={`/san-pham/${catLink}/${el.link}-${el._id}`}>
+                          <img src={`${domain}/${el.image}`} alt='' />
+                        </a>
                         <h2>{el.price ? new Number(el.price).toLocaleString('vi-VN', { style: 'currency', currency: 'vnd' }) : ''}</h2>
                         <p>{el.title}</p>
-                        <a href={`/c/${catLink}/${el.link}-${el._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart'></i>View More</a>
+                        <a href={`/san-pham/${catLink}/${el.link}-${el._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart'></i>Chi Tiết</a>
                       </div>
                       {/* <div className='product-overlay'>
                         <div className='overlay-content'>
@@ -30,12 +32,12 @@ export default class FeatureItems extends React.PureComponent {
                         </div>
                       </div> */}
                   </div>
-                  <div className='choose'>
+                  {/* <div className='choose'>
                     <ul className='nav nav-pills nav-justified'>
-                      <li><a href='#'><i className='fa fa-plus-square'></i>Add to wishlist</a></li>
-                      <li><a href='#'><i className='fa fa-plus-square'></i>Add to compare</a></li>
+                      <li><a href='#'><i className='fa fa-plus-square'></i>Thêm Vào Yêu Thích</a></li>
+                      <li><a href='#'><i className='fa fa-plus-square'></i>Chi Tiết</a></li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             )

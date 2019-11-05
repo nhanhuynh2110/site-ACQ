@@ -6,6 +6,28 @@ import LeftSideBar from '../../../component/control/leftSideBar'
 import FeatureItems from '../../../component/control/featureItems'
 
 
+export default class ListBlog extends React.PureComponent {
+  render() {
+    return (
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="left-sidebar">
+                <LeftSideBar categories={categories || []} />
+              </div>
+            </div>
+            <div class="col-sm-9">
+              <FeaturePost categories={categories || []} isPaging page={this.props.page} pageSize={this.state.pageSize} total={this.state.total} catId={this.props.catId} products={products} onChangePaging={this.onChangePaging}/>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+}
+
+
 class Content extends React.PureComponent {
   constructor (props) {
     super(props)
@@ -40,13 +62,13 @@ class Content extends React.PureComponent {
   nextPage () {
     let {page} = this.props
     let {catId} = this.props.match.params
-    this.props.history.push(`/san-pham/${catId}?page=${parseInt(page) + 1}`)
+    this.props.history.push(`/bai-viet/${catId}?page=${parseInt(page) + 1}`)
     this.getList(parseInt(page) + 1)
   }
 
   prevPage () {
     let {page, catId} = this.props
-    this.props.history.push(`/san-pham/${catId}?page=${parseInt(page) - 1}`)
+    this.props.history.push(`/bai-viet/${catId}?page=${parseInt(page) - 1}`)
     this.getList(parseInt(page) - 1)
   }
 
@@ -54,7 +76,7 @@ class Content extends React.PureComponent {
     let {catId} = this.props
     const page = e.currentTarget.getAttribute('data-page')
 
-    this.props.history.push(`/san-pham/${catId}?page=${parseInt(page)}`)
+    this.props.history.push(`/bai-viet/${catId}?page=${parseInt(page)}`)
     this.getList(parseInt(page))
   }
 

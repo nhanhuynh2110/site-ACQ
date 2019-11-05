@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Layout from '../layout/default'
 import { withContainer } from '../context'
-import { Home, List, Detail, Contact } from './page'
+import { Home, List, Detail, Contact, ListBlog, Blog } from './page'
 
 class App extends React.PureComponent {
   render () {
@@ -13,8 +13,10 @@ class App extends React.PureComponent {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/contact' component={Contact} />
-              <Route exact path='/c/:catId' component={List} />
-              <Route path='/c/:catId/:postlink' component={Detail} />
+              <Route exact path='/san-pham/:catId' component={List} />
+              <Route path='/san-pham/:catId/:postlink' component={Detail} />
+              <Route exact path='/bai-viet/:catPostId' component={ListBlog} />
+              <Route exact path='/bai-viet/:catPostId/:bloglink' component={Blog} />
             </Switch>
           </Layout>
         </Suspense>
