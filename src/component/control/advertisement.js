@@ -6,7 +6,7 @@ const domain = conf.server.domain
 
 export default class Advertisement extends React.PureComponent {
   render () {
-    const category = this.props.category
+    const {category, prefix} = this.props
     const imgUrl = _.get(category, 'img')
     const img = domain + '/' + imgUrl
     
@@ -22,7 +22,7 @@ export default class Advertisement extends React.PureComponent {
             <div className='container'>
             
               <h2>{category && category.title}</h2>
-              <span className='display-block'><a>Home</a>/<a>{category && category.title}</a></span>
+              <span className='display-block'><a>Home</a> &nbsp;/&nbsp;<a href={`${prefix}/${category && category.link}`}>{category && category.title}</a></span>
             </div>
           </div>
           

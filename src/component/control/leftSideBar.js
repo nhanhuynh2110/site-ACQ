@@ -6,17 +6,26 @@ import Shipping from './shipping'
 
 class LeftSideBar extends React.PureComponent {
   render () {
-    const {categories = []} = this.props
-    return (
+    const {categories = [], categoryBlogs = [], isProduct} = this.props
+    return <>
       <div className='left-sidebar'>
-        <h2>Danh Mục Sản Phẩm</h2>
-        <PanelGroup categories={categories || []}/>
+        {isProduct
+          ? <>
+            <PanelGroup categories={categories || []} title='san pham' prefix='/san-pham' />
+            <PanelGroup categories={categoryBlogs || []}  title='Bai viet' prefix='/bai-viet' />
+          </>
+          : <>
+            <PanelGroup categories={categoryBlogs || []}  title='Bai viet' prefix='/bai-viet' />
+            <PanelGroup categories={categories || []} title='san pham' prefix='/san-pham' />
+          </>
+        }
+        
         {/* <BrandsProducts />
         <PriceRange /> */}
-        <Shipping />
+        {/* <Shipping /> */}
         <Shipping />
       </div>
-    )
+    </>
   }
 }
 

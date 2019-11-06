@@ -15,8 +15,8 @@ class App extends React.PureComponent {
               <Route exact path='/contact' component={Contact} />
               <Route exact path='/san-pham/:catId' component={List} />
               <Route path='/san-pham/:catId/:postlink' component={Detail} />
-              <Route exact path='/bai-viet/:catPostId' component={ListBlog} />
-              <Route exact path='/bai-viet/:catPostId/:bloglink' component={Blog} />
+              <Route exact path='/bai-viet/:catId' component={ListBlog} />
+              <Route exact path='/bai-viet/:catId/:postlink' component={Blog} />
             </Switch>
           </Layout>
         </Suspense>

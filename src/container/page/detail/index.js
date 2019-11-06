@@ -46,7 +46,6 @@ class Detail extends React.PureComponent {
     const arr = postlink.split('-')
     const postId = arr[arr.length - 1]
     this.props.api.detail.get({id: postId}, (err, data) => {
-      console.log('er111r, data', err, data)
       if (err) return
       this.setState({
         catId: catId,
@@ -166,7 +165,7 @@ class Detail extends React.PureComponent {
 
 class Wrapper extends React.PureComponent {
   render () {
-    const {categories} = this.props
+    const {categories, categoryBlogs} = this.props
     let category = null
     let nav = []
     let {catId, postlink} = this.props.match.params
@@ -178,12 +177,12 @@ class Wrapper extends React.PureComponent {
     }
     return (
       <>
-        <Advertisement category={category}/>
+        <Advertisement category={category} prefix='/san-pham'/>
         <section>
           <div className='container'>
             <div className='row'>
               <div className='col-sm-3'>
-                <LeftSideBar categories={categories || []} />
+                <LeftSideBar categories={categories || []} categoryBlogs={categoryBlogs || []} isProduct />
               </div>
 
               <div className='col-sm-9'>
@@ -198,5 +197,6 @@ class Wrapper extends React.PureComponent {
 }
 export default withContainer(Wrapper, (c, props) => ({
   api: c.api,
-  categories: c.data.categories
+  categories: c.data.categories,
+  categoryBlogs: c.data.categoryBlogs
 }))

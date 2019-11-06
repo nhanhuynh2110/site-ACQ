@@ -17,12 +17,12 @@ class Headers extends React.PureComponent {
               </div> */}
               <div className='socical Module Module-135'>
                 <div className='ModuleContent'>
-                  <a target='_blank' href='https://www.facebook.com/gsbatteryvn'><em className='fa fa-facebook-square' /></a>
+                  <a target='_blank' href='https://www.facebook.com/thaoanhdesigner/?ref=bookmarks'><em className='fa fa-facebook-square' /></a>
                   <a href='#'><em className='fa fa-twitter' /></a>
                   <a target='_blank' href='https://www.youtube.com/channel/UCBrmXp98bM0BTSmI4eO0zrg'><em className='fa fa-youtube' /></a>
                 </div>
               </div>
-              <a className='lang' href='en-US/Default.html' title='English'><img src='/images/us.gif' alt='English' /></a>
+              {/* <a className='lang' href='en-US/Default.html' title='English'><img src='/images/us.gif' alt='English' /></a> */}
             </div>
             <HeaderMiddle categoriesProduct={this.props.categoriesProduct} post={this.props.post} />
           </div>

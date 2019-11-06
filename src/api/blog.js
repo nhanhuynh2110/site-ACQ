@@ -11,8 +11,9 @@ export default class Blog extends Base {
   }
 
   get (payload = {}, cb) {
-    payload['api'] = `/web/detail`
+    payload['api'] = `/web/detail-blog`
     this.adapter.get('/base-api', payload, (error, resp) => {
+      console.log('resp', resp)
       if (error) return handleError(error, false, cb)
       if (resp.status !== 200) return cb(resp.message)
       if (typeof cb === 'function') {
