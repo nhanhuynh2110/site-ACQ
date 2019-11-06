@@ -176,7 +176,7 @@
         display: flex;
         > li {
           // float: left;
-          flex-grow: 1;
+          flex-grow: 0;
           height: 27px;
           padding: 0 12px;
           border: 1px solid transparent;
@@ -222,25 +222,27 @@
           .menu_prd_wrap {
             display: none;
             position: absolute;
-            z-index: 1;
+            z-index: 4;
             width: 100%;
             left: 0;
             .container {
               padding-right: 0;
               padding-left: 0;
-              background: #cbe4f2;
+              background: #ffffff;
               border: 1px solid #0b76bb;
               border-radius: 0 5px 5px 5px;
             }
             ul.menu_prd {
               padding-left: 0px;
+              padding-bottom: 10px;
               display: flex;
               flex-wrap: wrap;
               > li {
                 text-align: left;
-                padding: 20px;
+                padding: 20px 20px 0 20px;
                 width: 33%;
                 flex-grow: 0;
+                
                 &:hover {
                   background: #ffffff;
                 }
@@ -250,12 +252,29 @@
                   border-radius: 5px;
                   strong {
                     color: #428bca;
+                    position: relative;
+                    padding-bottom: 10px;
+
+                    &:after {
+                      content: '';
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                      width: 50px;
+                      border-bottom: 1px solid;
+                    }
                   }
                 }
                 ul {
+                  margin-top: 30px;
                   padding-left: 0;
                   li {
                     margin: 10px 0;
+                    border-bottom: 1px dotted #e2e2e2;
+                    padding-bottom: 10px;
+                    &:last-child {
+                      border-bottom: none;
+                    }
                   }
                 }
                 a {

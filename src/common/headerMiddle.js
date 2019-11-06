@@ -70,7 +70,6 @@ class HeaderMiddle extends React.PureComponent {
 
   render () {
     const {categoriesProduct, post = []} = this.props
-    console.log('post', post)
     return (
       <div className='wrap_nav' ref={this.setWrapperRef}>
         <span className='icon-mobile' onClick={this.onOpen} />
@@ -78,7 +77,7 @@ class HeaderMiddle extends React.PureComponent {
           <div className='ModuleContent'>
             <ul className={this.state.isOpen ? 'noli topmenu active' : 'noli topmenu'}>
               <li className='prd_li1 active flex-grow-0'><a className='active' href='/' target='_self'>TRANG CHỦ</a></li>
-              <li className='prd_li2 p-relative'>
+              {/* <li className='prd_li2 p-relative'>
                 <a onClick={() => this.onActiveMenu('gioi-thieu')} className='trainsion p-relative' target='_self'>
                   GIỚI THIỆU
                   <span className='arrow-menu' />
@@ -89,7 +88,7 @@ class HeaderMiddle extends React.PureComponent {
                   <li><a className='trainsion' href='gioi-thieu/thong-tin-gsv-1/chung-nhan.html' target='_self'>Chứng nhận-Giải thưởng</a></li>
                 </ul>
 
-              </li>
+              </li> */}
               <li className='prd_li3'>
                 <a onClick={() => this.onActiveMenu('san-pham')} className='trainsion p-relative' target='_self'>
                   SẢN PHẨM
@@ -101,12 +100,12 @@ class HeaderMiddle extends React.PureComponent {
 
               </li>
               <li className='prd_li4 p-relative'>
-                <a onClick={() => this.onActiveMenu('tin-tuc')} className='trainsion p-relative' target='_self'>
+                <a onClick={() => this.onActiveMenu('bai-viet')} className='trainsion p-relative' target='_self'>
                   TIN TỨC
                   <span className='arrow-menu' />
                 </a>
-                <ul className={this.state.activeMenu === 'tin-tuc' ? 'noli submenu active' : 'noli submenu'}>
-                  {post.map(el => !el.parentId && <li key={`tin-tuc-${el._id}`}><a className='trainsion' href={`/tin-tuc/${el.link}`} target='_self'>{el.title}</a></li>)}
+                <ul className={this.state.activeMenu === 'bai-viet' ? 'noli submenu active' : 'noli submenu'}>
+                  {post.map(el => !el.parentId && <li key={`bai-viet-${el._id}`}><a className='trainsion' href={`/bai-viet/${el.link}`} target='_self'>{el.title}</a></li>)}
                   {/* <li><a className='trainsion' href='tin-tuc/tin-gsv.html' target='_self'>Tin GSV</a></li>
                   <li><a className='trainsion' href='tin-tuc/catalogue-dien-tu.html' target='_self'>Catalogue điện tử</a></li>
                   <li><a className='trainsion' href='tin-tuc/thu-vien-anh.html' target='_self'>Thư viện ảnh</a></li>
@@ -115,7 +114,7 @@ class HeaderMiddle extends React.PureComponent {
                 </ul>
 
               </li>
-              <li className='prd_li5 p-relative'>
+              {/* <li className='prd_li5 p-relative'>
                 <a onClick={() => this.onActiveMenu('dich-vu')} className='trainsion p-relative' target='_self'>
                   DỊCH VỤ
                   <span className='arrow-menu' />
@@ -126,7 +125,7 @@ class HeaderMiddle extends React.PureComponent {
                   <li><a className='trainsion' href='dich-vu/dich-vu/meo-su-dung-ac-quy-2/10-dau-hieu-ac-quy-can-duoc-cham-soc.html' target='_self'>Mẹo sử dụng ắc quy</a></li>
                   <li><a className='trainsion' href='dich-vu/hoi-dap.html' target='_self'>Hỏi đáp</a></li>
                 </ul>
-              </li>
+              </li> */}
               {/* <li className='prd_li6 p-relative'>
                 <a onClick={() => this.onActiveMenu('tuyen-dung')} className='trainsion p-relative' target='_self'>
                   Tuyển dụng
@@ -140,7 +139,7 @@ class HeaderMiddle extends React.PureComponent {
                 </ul>
 
               </li> */}
-              <li className='prd_li7 p-relative flex-grow-0'><a className='trainsion' href='/contact' target='_self'>Liên hệ</a></li>
+              {/* <li className='prd_li7 p-relative flex-grow-0'><a className='trainsion' href='/contact' target='_self'>Liên hệ</a></li> */}
             </ul>
           </div>
         </div>

@@ -16,15 +16,14 @@ export default ({groups = []}) => {
           {childs.length > 0 && <ul key={`child-${p._id}`} className='noli submenu_prd'>
             {childs.map(el => {
               return <li key={`children-${el._id}`}>
-                {/* <a className='black trainsion' href={`/san-pham/${el.link}`} target='_self'>
+                <a className='black trainsion' href={`/san-pham/${el.link}`} target='_self'>
                   <i className='fa fa-angle-right icon-arrow' />
                   {el.title}
-                </a> */}
-                <a className='black trainsion' href={`/san-pham/${el.link}`} target='_self'>
-                  <span className='title-image' style={{ background: `url(${domain}/${el.img}) center center` }} />
-                  {/* <i className='fa fa-angle-right icon-arrow' /> */}
-                  {el.title}
                 </a>
+                {/* <a className='black trainsion' href={`/san-pham/${el.link}`} target='_self'>
+                  <span className='title-image' style={{ background: `url(${domain}/${el.img}) center center` }} />
+                  {el.title}
+                </a> */}
               </li>
             })}
           </ul>}

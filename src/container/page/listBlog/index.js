@@ -3,30 +3,7 @@ import queryString from 'query-string'
 import { withContainer } from '../../../context'
 import Advertisement from '../../../component/control/advertisement'
 import LeftSideBar from '../../../component/control/leftSideBar'
-import FeatureItems from '../../../component/control/featureItems'
-
-
-export default class ListBlog extends React.PureComponent {
-  render() {
-    return (
-      <section>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="left-sidebar">
-                <LeftSideBar categories={categories || []} />
-              </div>
-            </div>
-            <div class="col-sm-9">
-              <FeaturePost categories={categories || []} isPaging page={this.props.page} pageSize={this.state.pageSize} total={this.state.total} catId={this.props.catId} products={products} onChangePaging={this.onChangePaging}/>
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
-}
-
+import FeaturePost from '../../../component/control/featurePost'
 
 class Content extends React.PureComponent {
   constructor (props) {
@@ -83,26 +60,27 @@ class Content extends React.PureComponent {
   getList (page) {
     let {catId} = this.props
     if (!catId) return
-    this.props.api.list.list({qcat: catId, page: page || 1, pageSize: this.state.pageSize}, (err, resp) => {
+    this.props.api.listBlog.list({qcat: catId, page: page || 1, pageSize: this.state.pageSize}, (err, resp) => {
       if (err) return
-      this.setState({total: resp.total, products: resp.products, nav: resp.categories, category: resp.category, page: page, catId: catId})
+      this.setState({total: resp.total, posts: resp.posts, page: page, catId: catId})
     })
   }
 
   render () {
-    const {products = []} = this.state
-    const {categories = [], category} = this.props
+    const {posts = []} = this.state
+    const {categoryBlogs = [], categoryBlog, categories=[]} = this.props
     return <>
-      <Advertisement category={category}/>
+      <Advertisement category={categoryBlog} prefix='/bai-viet' />
       <section>
         <div className='container'>
           <div className='row'>
             <div className='col-sm-3'>
-              <LeftSideBar categories={categories || []} />
+              <LeftSideBar categories={categories || []} categoryBlogs={categoryBlogs || []} />
             </div>
 
             <div className='col-sm-9'>
-              <FeatureItems categories={categories || []} isPaging page={this.props.page} pageSize={this.state.pageSize} total={this.state.total} catId={this.props.catId} products={products} onChangePaging={this.onChangePaging}/>
+              <FeaturePost categoryBlog={categoryBlog} categories={categoryBlogs || []} isPaging page={this.props.page} pageSize={this.state.pageSize} total={this.state.total} catId={this.props.catId} posts={posts} onChangePaging={this.onChangePaging}/>
+              {/* <FeatureItems categories={categories || []} isPaging page={this.props.page} pageSize={this.state.pageSize} total={this.state.total} catId={this.props.catId} products={products} onChangePaging={this.onChangePaging}/> */}
             </div>
           </div>
         </div>
@@ -115,21 +93,23 @@ class Content extends React.PureComponent {
 class List extends React.PureComponent {
   render () {
     let {catId} = this.props.match.params
-    const {categories} = this.props
-    let category = null
+    const {categories, categoryBlogs} = this.props
+    let categoryBlog = null
     let nav = []
-    if (categories && categories.length > 0) {
-      category = categories.find(el => el.link === catId)
-      const parentId = category.parentId ? category.parentId : category._id
-      nav = categories.filter(el => el.parentId === parentId)
+    if (categoryBlogs && categoryBlogs.length > 0) {
+      categoryBlog = categoryBlogs.find(el => el.link === catId)
+      if (!categoryBlog) return null
+      const parentId = categoryBlog && categoryBlog.parentId ? categoryBlog.parentId : categoryBlog._id
+      nav = categoryBlogs.filter(el => el.parentId === parentId)
     }
     const parsed = queryString.parse(this.props.location.search)
     let {page} = parsed
-    return <Content page={page ? parseInt(page) : 1} categories={this.props.categories || []} category={category} nav={nav} catId={this.props.match.params.catId} {...this.props} />
+    return <Content page={page ? parseInt(page) : 1} categories={categories} categoryBlogs={categoryBlogs || []} categoryBlog={categoryBlog} nav={nav} catId={this.props.match.params.catId} {...this.props} />
   }
 }
 
 export default withContainer(List, (c, props) => ({
   api: c.api,
-  categories: c.data.categories
+  categories: c.data.categories,
+  categoryBlogs: c.data.categoryBlogs
 }))

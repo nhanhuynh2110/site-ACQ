@@ -69,14 +69,14 @@ class Content extends React.PureComponent {
 
   render () {
     const {products = []} = this.state
-    const {categories = [], category} = this.props
+    const {categories = [], categoryBlogs, category} = this.props
     return <>
-      <Advertisement category={category}/>
+      <Advertisement category={category} prefix='/san-pham' />
       <section>
         <div className='container'>
           <div className='row'>
             <div className='col-sm-3'>
-              <LeftSideBar categories={categories || []} />
+              <LeftSideBar categories={categories || []} categoryBlogs={categoryBlogs || []} isProduct />
             </div>
 
             <div className='col-sm-9'>
@@ -109,5 +109,6 @@ class List extends React.PureComponent {
 
 export default withContainer(List, (c, props) => ({
   api: c.api,
-  categories: c.data.categories
+  categories: c.data.categories,
+  categoryBlogs: c.data.categoryBlogs
 }))
