@@ -1,7 +1,8 @@
 import conf from '../conf/public'
+
 const loadImage = (uri) => conf.domain + '/' + uri
 
-const formatPrice = (price) => price ? (new Number(price)).toLocaleString('vi-VN', { style: 'currency', currency: 'vnd' }) : ''
+const formatPrice = (price, locale = 'vi-VN') => price ? parseFloat(price).toLocaleString(locale, { style: 'currency', currency: 'VND' }) : ''
 
 const formatDate = (date) => (new Date(date)).toLocaleString('vi-VN', { dateStyle: 'medium' })
 
