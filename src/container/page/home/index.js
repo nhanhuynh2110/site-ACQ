@@ -14,7 +14,7 @@ class HomePage extends React.PureComponent {
 
   render () {
     let categoriesIsHome = []
-    let {categories, galleries, productsNew, productsHot, categoryHomeWithProduct} = this.props
+    let {categories, galleries, productsNew, productsHot, categoryHomeWithProduct, categoryBlogs} = this.props
     if (categories) categoriesIsHome = categories.filter(cat => cat.isHome === true)
     if (!galleries) galleries = []
     return (
@@ -24,7 +24,7 @@ class HomePage extends React.PureComponent {
           <div className='container'>
             <div className='row'>
               <div className='col-sm-3'>
-                <LeftSideBar categories={categories} />
+                <LeftSideBar categories={categories} categoryBlogs={categoryBlogs} isProduct/>
               </div>
 
               <div className='col-sm-9'>
@@ -44,5 +44,6 @@ export default withContainer(HomePage, (c, props) => ({
   categories: c.data.categories || [],
   productsNew: c.data.productsNew || [],
   productsHot: c.data.productsHot || [],
-  categoryHomeWithProduct: c.data.categoryHomeWithProduct || []
+  categoryHomeWithProduct: c.data.categoryHomeWithProduct || [],
+  categoryBlogs: c.data.categoryBlogs || []
 }))

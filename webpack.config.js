@@ -6,8 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: {
-    main: './src/main.js',
-    login: './src/login.js'
+    main: './src1/main.js'
+    // login: './src/login.js'
   },
   watch: true,
   output: {

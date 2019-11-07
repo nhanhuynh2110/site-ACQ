@@ -32,19 +32,13 @@ export default class FeatureItems extends React.PureComponent {
                         </div>
                       </div> */}
                   </div>
-                  {/* <div className='choose'>
-                    <ul className='nav nav-pills nav-justified'>
-                      <li><a href='#'><i className='fa fa-plus-square'></i>Thêm Vào Yêu Thích</a></li>
-                      <li><a href='#'><i className='fa fa-plus-square'></i>Chi Tiết</a></li>
-                    </ul>
-                  </div> */}
-                </div>
               </div>
-            )
-          })}
-          
-          {isPaging && total > 0 && <div className='col-sm-12'><Paging page={page} total={total} pageSize={pageSize} changePage={onChangePaging} /></div>}
-        </div>
+            </div>
+          )
+        })}
+
+        {isPaging && total > 0 && <div className='col-sm-12'><Paging page={page} total={total} pageSize={pageSize} changePage={onChangePaging} /></div>}
+      </div>
     )
   }
 }

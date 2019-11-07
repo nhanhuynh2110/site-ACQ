@@ -11,7 +11,10 @@ var path = require('path')
 var io = require('socket.io')(server)
 
 // middle ware
-// app.use(global.appSession)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 app.use('/', express.static('dist'))
 app.use('/', express.static('lib'))
 

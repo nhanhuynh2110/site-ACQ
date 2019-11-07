@@ -19,7 +19,7 @@ export default class TabContent extends React.PureComponent {
         </div>
         <div className='tab-content'>
           {categoryHomeWithProduct.map((el, k) => {
-            
+
             return (
               <div key={el._id} className={`tab-pane fade ${k === 0 ? 'active in' : ''}`} id={`tab${el._id}`} >
                 {el.products.map(pro => {
@@ -38,8 +38,8 @@ export default class TabContent extends React.PureComponent {
                     </div>
                   </div>
                 })}
-                
-              
+
+
               </div>
             )
           })}

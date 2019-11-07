@@ -25,7 +25,7 @@ class ApiAdapterForward extends Adapter {
 
   post (cb) {
     this.options['method'] = 'POST'
-    this.options['headers']['Content-Type'] = 'application/json'
+    this.options.headers = {...(this.options.headers || {}), 'Content-Type': 'application/json'}
     this.options = setUrl(this.options)
     super.post((error, body) => {
       if (error) return cb(error)
@@ -35,7 +35,7 @@ class ApiAdapterForward extends Adapter {
 
   put (cb) {
     this.options['method'] = 'PUT'
-    this.options['headers']['Content-Type'] = 'application/json'
+    this.options.headers = {...(this.options.headers || {}), 'Content-Type': 'application/json'}
     this.options = setUrl(this.options)
     super.put((error, body) => {
       if (error) return cb(error)

@@ -20,7 +20,7 @@ export default class RecommendedItems extends React.PureComponent {
             <p>{item.title}</p>
             <a href={`/san-pham/${catLink}/${item.link}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart'></i>View More</a>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -28,13 +28,13 @@ export default class RecommendedItems extends React.PureComponent {
 
   render () {
     const {productsHot = [], categories = []} = this.props
-    
+
     let items = {}
     productsHot.forEach((el, k) => {
       const cat = categories.find(cat => cat._id === el.categoryId)
       const catLink = _.get(cat, 'link')
       const number = k + 1
-      const keyItems = 'key-' + Math.ceil(number/3)
+      const keyItems = 'key-' + Math.ceil(number / 3)
       if (keyItems in items) {
         items[keyItems].push(this.renderBlockComponent(el, catLink))
       } else {
@@ -42,8 +42,6 @@ export default class RecommendedItems extends React.PureComponent {
         items[keyItems].push(this.renderBlockComponent(el, catLink))
       }
     })
-
-
     return (
       <div className='recommended_items'>
         <h2 className='title text-center'>Sản Phẩm HOT</h2>
@@ -51,12 +49,12 @@ export default class RecommendedItems extends React.PureComponent {
           <div className='carousel-inner'>
             {Object.keys(items).map((el, k) => this.blockItems('recommended-' + el, items[el], k === 0 ? 'active' : ''))}
           </div>
-            <a className='left recommended-item-control' href='#recommended-item-carousel' data-slide='prev'>
-            <i className='fa fa-angle-left'></i>
-            </a>
-            <a className='right recommended-item-control' href='#recommended-item-carousel' data-slide='next'>
-            <i className='fa fa-angle-right'></i>
-            </a>			
+          <a className='left recommended-item-control' href='#recommended-item-carousel' data-slide='prev'>
+            <i className='fa fa-angle-left' />
+          </a>
+          <a className='right recommended-item-control' href='#recommended-item-carousel' data-slide='next'>
+            <i className='fa fa-angle-right' />
+          </a>
         </div>
       </div>
     )

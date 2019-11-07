@@ -11,8 +11,9 @@ export default class ListBlog extends Base {
   }
 
   list (payload = {}, cb) {
-    payload['api'] = `/web/list`
+    payload['api'] = `/web/list-blog`
     this.adapter.get('/base-api', payload, (error, resp) => {
+      console.log('resp', resp)
       if (error) return handleError(error, false, cb)
       if (resp.status !== 200) return cb(resp.message)
       // this.emit('get-categories', resp.data)
