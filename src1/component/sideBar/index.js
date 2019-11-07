@@ -2,8 +2,7 @@ import React from 'react'
 import {subscribe} from 'react-hooks-usemodel'
 import _ from 'lodash'
 import PanelGroup from '../panelGroup'
-import STORELINK from '../../container/storeLink'
-const {prefixBV, prefixSP} = STORELINK
+import {prefixBV, prefixSP} from '../../container/storeLink'
 
 const SideBar = ({data, isProduct}) => {
   const categories = _.get(data, 'category.all', [])

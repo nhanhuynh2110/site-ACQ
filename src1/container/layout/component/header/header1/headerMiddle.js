@@ -2,8 +2,8 @@ import React from 'react'
 import _ from 'lodash'
 import MegaProduct from './megaProduct'
 import {subscribe} from 'react-hooks-usemodel'
-import STORELINK from '../../../../../container/storeLink'
-const {prefixBV} = STORELINK
+import {prefixBV} from '../../../../../container/storeLink'
+const prefix = prefixBV
 
 const HeaderMiddle = ({data}) => {
   const category = _.get(data, 'category', null)
@@ -87,7 +87,7 @@ const HeaderMiddle = ({data}) => {
               <span className='arrow-menu' />
             </a>
             <ul className={stateData.activeMenu === 'bai-viet' ? 'noli submenu active' : 'noli submenu'}>
-              {categoryPostParent.map(el => !el.parentId && <li key={`bai-viet-${el._id}`}><a className='trainsion' href={`${prefixBV}/${el.link}`} target='_self'>{el.title}</a></li>)}
+              {categoryPostParent.map(el => !el.parentId && <li key={`bai-viet-${el._id}`}><a className='trainsion' href={`${prefix}/${el.link}`} target='_self'>{el.title}</a></li>)}
               {/* <li><a className='trainsion' href='tin-tuc/tin-gsv.html' target='_self'>Tin GSV</a></li>
               <li><a className='trainsion' href='tin-tuc/catalogue-dien-tu.html' target='_self'>Catalogue điện tử</a></li>
               <li><a className='trainsion' href='tin-tuc/thu-vien-anh.html' target='_self'>Thư viện ảnh</a></li>

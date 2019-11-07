@@ -2,8 +2,8 @@ import React from 'react'
 import {subscribe} from 'react-hooks-usemodel'
 import _ from 'lodash'
 import {loadImage, formatPrice} from '../../utils'
-import STORELINK from '../../container/storeLink'
-const {prefixSP} = STORELINK
+import {prefixSP} from '../../container/storeLink'
+const prefix = prefixSP
 
 const TabContent = ({data}) => {
   const categoryHome = _.get(data, 'categoryHome', [])
@@ -29,7 +29,7 @@ const TabContent = ({data}) => {
                     <img src={`${loadImage(pro.image)}`} alt='' />
                     <h2>{formatPrice(pro.price)}</h2>
                     <p>{pro.title}</p>
-                    <a href={`${prefixSP}/${catLink}/${pro.link}-${pro._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />View More</a>
+                    <a href={`${prefix}/${catLink}/${pro.link}-${pro._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />View More</a>
                   </div>
                 </div>
               </div>

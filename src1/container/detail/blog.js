@@ -6,8 +6,7 @@ import Layout from '../layout'
 import {Advertisement} from '../../component'
 import {APICommon} from '../../api'
 import {loadImage, formatDate, formatTime} from '../../utils'
-import STORELINK from '../../container/storeLink'
-const {prefixBV} = STORELINK
+import {prefixBV} from '../../container/storeLink'
 const prefix = prefixBV
 
 const BlogDetails = ({data}) => {

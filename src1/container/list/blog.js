@@ -5,8 +5,7 @@ import useReactRouter from 'use-react-router'
 import {Paging, FeatureBlog, Advertisement} from '../../component'
 import Layout from '../layout'
 import {APICommon} from '../../api'
-import STORELINK from '../storeLink'
-const {prefixBV} = STORELINK
+import {prefixBV} from '../storeLink'
 const prefix = prefixBV
 
 const List = ({data}) => {

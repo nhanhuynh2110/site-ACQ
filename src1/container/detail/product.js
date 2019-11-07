@@ -5,9 +5,9 @@ import useReactRouter from 'use-react-router'
 import Layout from '../layout'
 import {Advertisement, ImageDetail} from '../../component'
 import {APICommon} from '../../api'
-import STORELINK from '../storeLink'
+import {prefixSP} from '../storeLink'
 import {formatPrice, formatDate, formatTime} from '../../utils'
-const {prefixSP} = STORELINK
+const prefix = prefixSP
 
 const Details = ({data}) => {
   const categories = _.get(data, 'category.all', [])
@@ -31,7 +31,7 @@ const Details = ({data}) => {
   if (!info) return null
 
   return <React.Fragment>
-    <Advertisement.ACQ category={category} prefix={prefixSP} />
+    <Advertisement.ACQ category={category} prefix={prefix} />
     <Layout.SubLayout>
       <div className='product-details'>
         <div className='col-sm-5'>

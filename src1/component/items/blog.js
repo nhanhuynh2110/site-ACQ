@@ -1,7 +1,6 @@
 import React from 'react'
 import {loadImage, formatDate, formatTime} from '../../utils'
-import STORELINK from '../../container/storeLink'
-const {prefixBV} = STORELINK
+import {prefixBV} from '../../container/storeLink'
 const prefix = prefixBV
 
 export default ({posts = []}) => {

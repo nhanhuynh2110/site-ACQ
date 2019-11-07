@@ -1,8 +1,8 @@
 import React from 'react'
 import _ from 'lodash'
 import {loadImage, formatPrice} from '../../utils'
-import STORELINK from '../../container/storeLink'
-const {prefixSP} = STORELINK
+import {prefixSP} from '../../container/storeLink'
+const prefix = prefixSP
 
 export default ({items = []}) => {
   return <div className='features_items'>
@@ -18,7 +18,7 @@ export default ({items = []}) => {
               </a>
               <h2>{formatPrice(el.price)}</h2>
               <p>{el.title}</p>
-              <a href={`${prefixSP}/${cat.link}/${el.link}-${el._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />Chi Tiết</a>
+              <a href={`${prefix}/${cat.link}/${el.link}-${el._id}`} className='btn btn-default add-to-cart'><i className='fa fa-shopping-cart' />Chi Tiết</a>
             </div>
             {/* <div className='product-overlay'>
               <div className='overlay-content'>
