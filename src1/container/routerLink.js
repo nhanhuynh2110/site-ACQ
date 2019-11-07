@@ -1,4 +1,4 @@
-import {Home, List, Detail, Contact} from './index'
+import {Home, List, Detail, Contact, NotFound} from './index'
 import STORELINK from './storeLink'
 const {
   CONTACT,
@@ -11,10 +11,11 @@ const {
 export default () => {
   return [
     {key: 'home', path: '/', exact: true, component: Home},
-    {key: 'home', path: CONTACT, exact: true, component: Contact},
-    {key: 'product-list', path: CATEGORY_PRODUCT_LIST, exact: true, component: List},
-    {key: 'product-detail', path: CATEGORY_PRODUCT_DETAIL, exact: true, component: Detail},
-    {key: 'blog-list', path: CATEGORY_BLOG_LIST, exact: true, component: List.BlogList},
-    {key: 'blog-detail', path: CATEGORY_BLOG_DETAIL, exact: true, component: Detail.BlogDetail}
+    {key: 'contact', path: CONTACT, exact: true, component: Contact},
+    {key: 'product-list', path: CATEGORY_PRODUCT_LIST, component: List},
+    {key: 'product-detail', path: CATEGORY_PRODUCT_DETAIL, component: Detail},
+    {key: 'blog-list', path: CATEGORY_BLOG_LIST, component: List.BlogList},
+    {key: 'blog-detail', path: CATEGORY_BLOG_DETAIL, component: Detail.BlogDetail},
+    {key: 'default', component: NotFound}
   ]
 }
