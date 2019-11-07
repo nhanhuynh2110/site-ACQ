@@ -5,7 +5,6 @@ import {loadImage} from '../../utils'
 
 const Slider = ({data}) => {
   const galleries = _.get(data, 'galleries', [])
-  console.log('galleries', galleries)
   return <section id='slider'>
     <div className='col-sm-12'>
       <div className='row'>

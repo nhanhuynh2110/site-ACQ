@@ -10,17 +10,22 @@ const defaultOpt = (method = 'GET', body = null) => {
 class API {
   get (url, query = {}) {
     return fetch(formatLink(url, query), defaultOpt('GET'))
-      .then((response) => response.json()).then(hanldeResponse)
+      .then(responseHandler).then(resultHandler)
+  }
+
+  post (url, query = {}, body = {}) {
+    return fetch(formatLink(url, query), defaultOpt('POST', body))
+      .then(responseHandler).then(resultHandler)
   }
 
   put (url, query = {}, body = {}) {
     return fetch(formatLink(url, query), defaultOpt('PUT', body))
-      .then(response => response.json()).then(hanldeResponse)
+      .then(responseHandler).then(resultHandler)
   }
 
   delete (url, query = {}, body = {}) {
     return fetch(formatLink(url, query), defaultOpt('DELETE', body))
-      .then(response => response.json()).then(hanldeResponse)
+      .then(responseHandler).then(resultHandler)
   }
 
   basAPI () { return '/base-api' }
@@ -35,7 +40,15 @@ const formatLink = (url, query) => {
   return url
 }
 
-const hanldeResponse = (response) => {
+const responseHandler = (response) => {
+  if (response.status === 401) return
+  if (!response.ok) {
+    throw new Error(response.statusText)
+  }
+  return response.json()
+}
+
+const resultHandler = (response) => {
   if (!response.status) return Promise.reject(new Error('Request api invalid'))
   if (response.status !== 200) return Promise.rejec({ error: response.message || 'request api invalid' })
   return Promise.resolve({ data: response.data })

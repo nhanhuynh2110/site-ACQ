@@ -1,4 +1,5 @@
 import React from 'react'
+import HeaderMiddle from './headerMiddle'
 
 export default () => {
   return <header className='header1'>
@@ -22,7 +23,7 @@ export default () => {
             </div>
             <a className='lang' href='en-US/Default.html' title='English'><img src='/images/us.gif' alt='English' /></a>
           </div>
-          {/* <HeaderMiddle categoriesProduct={this.props.categoriesProduct} post={this.props.post} /> */}
+          <HeaderMiddle />
         </div>
       </div>
       <div className='clear' />
