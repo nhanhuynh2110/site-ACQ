@@ -9,7 +9,7 @@ import {Alert} from '../component'
 export default () => {
   const model = useModel(contactModel)
 
-  const {email, name, subject, message} = model
+  const {email, name, subject, message, phone} = model
 
   const [showMessage, setShowMessage] = React.useState(false)
 
@@ -43,6 +43,10 @@ export default () => {
 
     <Field className='form-group col-md-6'>
       <Input name={subject.name} placeholder={subject.placholder} value={subject.value} onChange={onChange} error={subject.error} />
+    </Field>
+
+    <Field className='form-group col-md-6'>
+      <Input name={phone.name} placeholder={phone.placholder} value={phone.value} onChange={onChange} error={phone.error} />
     </Field>
 
     <Field className='form-group col-md-12'>

@@ -24,6 +24,11 @@ export default () => {
       placholder: 'Subject'
     },
 
+    phone: {
+      label: 'phone',
+      placholder: 'Phone'
+    },
+
     message: {
       label: 'message',
       placholder: 'Your Message Here'

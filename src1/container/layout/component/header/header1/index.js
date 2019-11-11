@@ -1,7 +1,10 @@
 import React from 'react'
+import _ from 'lodash'
+import {subscribe} from 'react-hooks-usemodel'
 import HeaderMiddle from './headerMiddle'
 
-export default () => {
+const Header = ({data}) => {
+  const contactInfo = _.get(data, 'contactInfo')
   return <header className='header1'>
     <div className='container'>
       <div className='row'>
@@ -16,9 +19,9 @@ export default () => {
             </div> */}
             <div className='socical Module Module-135'>
               <div className='ModuleContent'>
-                <a target='_blank' href='https://www.facebook.com/gsbatteryvn'><em className='fa fa-facebook-square' /></a>
-                <a href='#'><em className='fa fa-twitter' /></a>
-                <a target='_blank' href='https://www.youtube.com/channel/UCBrmXp98bM0BTSmI4eO0zrg'><em className='fa fa-youtube' /></a>
+                <a target='_blank' href={contactInfo && contactInfo.fb}><em className='fa fa-facebook-square' /></a>
+                <a href={contactInfo && contactInfo.twitter} target='_blank'><em className='fa fa-twitter' /></a>
+                <a target='_blank' href={contactInfo && contactInfo.youtube}><em className='fa fa-youtube' /></a>
               </div>
             </div>
             <a className='lang' href='en-US/Default.html' title='English'><img src='/images/us.gif' alt='English' /></a>
@@ -30,3 +33,4 @@ export default () => {
     </div>
   </header>
 }
+export default subscribe({ contactInfo: null })(Header)
